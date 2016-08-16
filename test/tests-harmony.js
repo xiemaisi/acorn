@@ -10851,8 +10851,8 @@ test("(function x({ a, b }){})", {
 });
 
 testFail("(function x(...[ a, b ]){})", "Unexpected token (1:15)", {ecmaVersion: 6});
-testFail("var a = { set foo(...v) {} };", "Setter cannot use rest params (1:18)", {ecmaVersion: 6});
-testFail("class a { set foo(...v) {} };", "Setter cannot use rest params (1:18)", {ecmaVersion: 6});
+testFail("var a = { set foo(...v) {} };", "Setter function argument must not be a rest parameter (1:18)", {ecmaVersion: 6});
+testFail("class a { set foo(...v) {} };", "Setter function argument must not be a rest parameter (1:18)", {ecmaVersion: 6});
 
 testFail("(function x({ a: { w, x }, b: [y, z] }, ...[a, b, c]){})", "Unexpected token (1:43)", {ecmaVersion: 6});
 
@@ -14408,9 +14408,9 @@ testFail("super", "'super' outside of function or class (1:0)", {ecmaVersion: 6}
 
 // https://github.com/ternjs/acorn/issues/275
 
-testFail("class A { get prop(x) {} }", "getter should have no params (1:18)", {ecmaVersion: 6});
-testFail("class A { set prop() {} }", "setter should have exactly one param (1:18)", {ecmaVersion: 6});
-testFail("class A { set prop(x, y) {} }", "setter should have exactly one param (1:18)", {ecmaVersion: 6});
+testFail("class A { get prop(x) {} }", "Getter must not have any formal parameters. (1:18)", {ecmaVersion: 6});
+testFail("class A { set prop() {} }", "Setter must have exactly one formal parameter. (1:18)", {ecmaVersion: 6});
+testFail("class A { set prop(x, y) {} }", "Setter must have exactly one formal parameter. (1:18)", {ecmaVersion: 6});
 
 // https://github.com/ternjs/acorn/issues/276
 

@@ -510,12 +510,12 @@ pp.parsePropertyValue = function(prop, isPattern, isGenerator, startPos, startLo
     if (prop.value.params.length !== paramCount) {
       let start = prop.value.start
       if (prop.kind === "get")
-        this.raiseRecoverable(start, "getter should have no params")
+        this.raiseRecoverable(start, "Getter must not have any formal parameters.")
       else
-        this.raiseRecoverable(start, "setter should have exactly one param")
+        this.raiseRecoverable(start, "Setter must have exactly one formal parameter.")
     } else {
       if (prop.kind === "set" && prop.value.params[0].type === "RestElement")
-        this.raiseRecoverable(prop.value.params[0].start, "Setter cannot use rest params")
+        this.raiseRecoverable(prop.value.params[0].start, "Setter function argument must not be a rest parameter")
     }
   } else if (this.options.ecmaVersion >= 6 && !prop.computed && prop.key.type === "Identifier") {
     if (this.keywords.test(prop.key.name) ||

@@ -29102,9 +29102,9 @@ testAssert("[1,2,] + {foo: 1,}", function() {
 
 // https://github.com/ternjs/acorn/issues/275
 
-testFail("({ get prop(x) {} })", "getter should have no params (1:11)");
-testFail("({ set prop() {} })", "setter should have exactly one param (1:11)");
-testFail("({ set prop(x, y) {} })", "setter should have exactly one param (1:11)");
+testFail("({ get prop(x) {} })", "Getter must not have any formal parameters. (1:11)");
+testFail("({ set prop() {} })", "Setter must have exactly one formal parameter. (1:11)");
+testFail("({ set prop(x, y) {} })", "Setter must have exactly one formal parameter. (1:11)");
 
 // https://github.com/ternjs/acorn/issues/363
 

@@ -490,12 +490,12 @@ pp.parseClass = function(node, isStatement) {
       if (method.value.params.length !== paramCount) {
         let start = method.value.start
         if (method.kind === "get")
-          this.raiseRecoverable(start, "getter should have no params")
+          this.raiseRecoverable(start, "Getter must not have any formal parameters.")
         else
-          this.raiseRecoverable(start, "setter should have exactly one param")
+          this.raiseRecoverable(start, "Setter must have exactly one formal parameter.")
       } else {
         if (method.kind === "set" && method.value.params[0].type === "RestElement")
-          this.raiseRecoverable(method.value.params[0].start, "Setter cannot use rest params")
+          this.raiseRecoverable(method.value.params[0].start, "Setter function argument must not be a rest parameter")
       }
     }
   }
